@@ -6,6 +6,7 @@ import rheinmetall.math.Vector;
 public class Main {
     public static void main(String[] args) {
 
+        /*
         Vector v = new Vector(4,4);
 
         Matrix m = Matrix.einheitsmatrix();
@@ -14,5 +15,8 @@ public class Main {
 
         Vector v2 = m.mal(v);
         System.out.println(v2);
+
+         */
+        System.out.println(Math.toRadians(180));
     }
 }

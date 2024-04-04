@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Vector {
 
-    private static final int DIMENSION = 3;
+    private static final int DIMENSION = 4;
 
     protected final double values[] = new double[DIMENSION];
 

@@ -1,2 +1,8 @@
 
-m	java:S106"+Replace this use of System.out by a logger.(³¬å8Ö»ÁÀê1J$4e20a1f7-4f04-46d7-8f81-dfefa85dacfa
+m	java:S106"+Replace this use of System.out by a logger.(õéîÍ8á›ÃÁê1J$98a6ddfa-f314-419f-984f-cd5944f1012b
+~	java:S125
+"<This block of commented-out lines of code should be removed.(­©¿8â›ÃÁê1J$c838c48e-1856-45b8-b71a-5b6ebe07606c
+V
+java:S1128"4Remove this unused import 'rheinmetall.math.Matrix'.(†Ô½€ûÿÿÿÿ8ï„ÄÁê1
+V
+java:S1128"4Remove this unused import 'rheinmetall.math.Vector'.(Òá‰ÿÿÿÿÿ8ğ„ÄÁê1
