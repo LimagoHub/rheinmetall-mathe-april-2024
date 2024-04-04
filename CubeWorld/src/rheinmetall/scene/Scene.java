@@ -12,15 +12,34 @@ public class Scene {
 
     private final Camera camera = new Camera();
     private final List<AbstractFigure> figures = new ArrayList<>();
+    private double winkel = 0;
 
     public Scene() {
         figures.add(new KoordinatenSystem());
         figures.add(new Wuerfel());
+        figures.add(new Wuerfel());
+        figures.add(new Wuerfel());
     }
 
     public void calucate() {
-        figures.get(1).getKoordinaten().setPosition(new Vector(-200,0,0));
-        figures.forEach(f->f.translateGlobal(new Vector(0,0,0.0), 0,0,Math.PI/4));
+
+        if(winkel > Math.PI*2) winkel = 0;
+        winkel += 0.01;
+
+        figures.get(1).getKoordinaten().setSkalierung(1.5);
+        figures.get(1).getKoordinaten().setAlpha(Math.PI/7);
+        figures.get(1).getKoordinaten().setBeta(winkel);
+
+        figures.get(1).getKoordinaten().setPosition(new Vector(200,0,0));
+
+        figures.get(3).getKoordinaten().setSkalierung(0.5);
+        figures.get(3).getKoordinaten().setGamma(Math.PI/7);
+        //figures.get(3).getKoordinaten().setGamma(Math.PI/7);
+        figures.get(3).getKoordinaten().setPosition(new Vector(-250,100,0));
+
+
+        for(var figure :figures)
+            figure.transform();
 
     }
 

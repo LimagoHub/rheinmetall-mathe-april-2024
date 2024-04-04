@@ -27,3 +27,5 @@ B
 src/main/Main.java,f\e\fe03b4fd3afe162c6e01309b98a22588e093d274
 I
 src/main/Application.java,a\d\adf2e68636d23df742511fcb6dbc513d9617bd16
+R
+"src/rheinmetall/gui/Projektor.java,0\b\0b67a51e07e02089eeb6a003f85e7c58e00c946e

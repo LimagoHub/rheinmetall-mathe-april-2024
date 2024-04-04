@@ -1,5 +1,6 @@
 package main;
 
+import rheinmetall.gui.ParallelProjektor;
 import rheinmetall.gui.Projektor;
 import rheinmetall.gui.Renderer;
 import rheinmetall.gui.ZentralProjektor;

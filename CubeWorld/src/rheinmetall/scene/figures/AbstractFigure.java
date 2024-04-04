@@ -42,7 +42,7 @@ public class AbstractFigure {
     }
 
 
-    private void transform() {
+    public void transform() {
 
         Matrix transformation = koordinaten.calculateLocalTransformationMatrix();
         tranformierteKnoten.clear();
@@ -58,45 +58,7 @@ public class AbstractFigure {
         return koordinaten;
     }
 
-    public void translateGlobal(Vector vector, double alpha, double beta, double gamma){
 
-        transform();
-        /*Matrix moveKamera = Matrix.translate(vector);
-
-        Matrix rotation = Matrix.rotiereUmXAchse(alpha);
-        rotation.malGleich(Matrix.rotiereUmYAchse(beta));
-        rotation.malGleich(Matrix.rotiereUmZAchse(gamma));
-
-        Matrix moveKameraBack = Matrix.translate(Vector.scalar(vector,-1));
-
-
-        setTranformierteKnoten(
-                new ArrayList<>(
-                        getTranformierteKnoten().stream()
-                                .map(v->moveKamera.mal(v))
-                                .map(v->rotation.mal(v))
-                                .map(v->moveKameraBack.mal(v))
-                        .toList()));
-
-
-         */
-        Matrix moveKamera = Matrix.translate(vector);
-
-        Matrix rotation =Matrix.rotiereUmXAchse(alpha);
-        rotation.malGleich(Matrix.rotiereUmYAchse(beta));
-        rotation.malGleich(Matrix.rotiereUmZAchse(gamma));
-
-
-        Matrix moveKameraBack = Matrix.translate(Vector.scalar(vector,-1));
-        setTranformierteKnoten(new ArrayList<>(
-                getTranformierteKnoten().stream()
-                        .map(k->moveKamera.mal(k))
-                        .map(k->rotation.mal(k))
-                        .map(k->moveKameraBack.mal(k))
-                        .toList()));
-
-
-    }
 
     public class LokaleKoordinaten {
 
@@ -151,12 +113,21 @@ public class AbstractFigure {
         }
 
         protected Matrix calculateLocalTransformationMatrix() {
-                Matrix result = Matrix.skalierungMatrix(getSkalierung());
-                result.malGleich(Matrix.rotiereUmXAchse(getAlpha()));
-                result.malGleich(Matrix.rotiereUmYAchse(getBeta()));
-                result.malGleich(Matrix.rotiereUmZAchse(getGamma()));
-                result.malGleich(Matrix.translate(getPosition()));
-                return result;
+
+                // Erstens: Skalieren
+                Matrix transformation =Matrix.einheitsMatrix();
+
+                transformation.malGleich(Matrix.skalierungMatrix(getSkalierung()));
+                // Rotieren
+                transformation.malGleich(Matrix.rotiereUmXAchse(getAlpha()));
+                transformation.malGleich(Matrix.rotiereUmYAchse(getBeta()));
+                transformation.malGleich(Matrix.rotiereUmZAchse(getGamma()));
+                // Translation (Verschieben)
+                //transformation.malGleich(Matrix.translate(getPosition()));
+            for (int i = 0; i < 3; i++) {
+                transformation.getValues()[i][3] = getPosition().getValues()[i];
+            }
+                return transformation;
         }
 
     }
